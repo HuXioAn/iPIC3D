@@ -41,7 +41,7 @@ include("${CMAKE_SOURCE_DIR}/cmake/sites/${SITE}.cmake")
 option(BUILD_SHARED_LIBS "Use shared libraries if ON, static if OFF" ON)
 option(USE_CATALYST "Use Catalyst adaptor" OFF)
 option(USE_BATSRUS "Use BATSRUS flag" OFF)
-option(USE_HDF5 "Use HDF5 library" OFF)
+option(USE_HDF5 "Use HDF5 library" ON)
 
 include(GNUInstallDirs)
 
@@ -80,7 +80,7 @@ if (USE_HDF5)
 
   if (NOT DEFINED HDF5_C_TARGET)
     message(STATUS "Creating a proper target for HDF5")
-    add_library(hdf5::hdf5 INTERFACE IMPORTED)
+    #add_library(hdf5::hdf5 INTERFACE IMPORTED)
     set_target_properties(hdf5::hdf5 PROPERTIES
       INTERFACE_COMPILE_DEFINITIONS "${HDF5_C_DEFINITIONS}"
       INTERFACE_INCLUDE_DIRECTORIES "${HDF5_C_INCLUDE_DIRS}"
@@ -91,7 +91,7 @@ if (USE_HDF5)
 
   if (NOT DEFINED HDF5_C_HL_TARGET)
     message(STATUS "Creating a proper target for HDF5 HL")
-    add_library(hdf5::hdf5_hl INTERFACE IMPORTED)
+    #add_library(hdf5::hdf5_hl INTERFACE IMPORTED)
     set_target_properties(hdf5::hdf5_hl PROPERTIES
       INTERFACE_LINK_LIBRARIES "hdf5::hdf5;${HDF5_C_HL_LIBRARIES}"
       )

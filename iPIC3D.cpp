@@ -45,7 +45,10 @@ int main(int argc, char **argv) {
     KCode.CalculateField(i); // E field
     KCode.ParticlesMover(); //use the fields to calculate the new v and x for particles
     KCode.CalculateB(); // B field
-    KCode.CalculateMoments(); // the charge intense, current intense and pressure tensor, interpolated to particles
+    KCode.CalculateMoments(); // the charge intense, current intense and pressure tensor, 
+    //calculated from particles position and celocity, then mapped to node(grid) for further solving
+    // some are mapped to cell center
+    
     KCode.WriteOutput(i);
     // print out total time for all tasks
     //timeTasks.print_cycle_times(i);

@@ -299,9 +299,12 @@ void c_Solver::CalculateMoments() {
         EMf->sumMoments(part);
         break;
       case Parameters::AoS:
-        EMf->setZeroPrimaryMoments();
-        convertParticlesToAoS();
-        EMf->sumMoments_AoS(part);
+        EMf->setZeroPrimaryMoments(); // clear the data to 0
+        convertParticlesToAoS(); // convert 
+        EMf->sumMoments_AoS(part); // sum up the 10 densities of each particles of each species
+        // then calculate the weight according to their position
+        // map the 10 momentum to the grid(node) with the weight
+        
         break;
       case Parameters::AoSintr:
         EMf->setZeroPrimaryMoments();
@@ -754,6 +757,7 @@ void c_Solver::Finalize() {
   my_clock->stopTiming();
 }
 
+//! place the particles into new cells according to their current position
 void c_Solver::sortParticles() {
 
   for(int species_idx=0; species_idx<ns; species_idx++)

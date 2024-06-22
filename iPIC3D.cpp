@@ -31,6 +31,14 @@ int main(int argc, char **argv) {
 
  MPIdata::init(&argc, &argv);
  {
+#ifdef DEBUG_MODE
+//DBG
+int volatile j = 0;
+while(j == 0){
+  
+}
+#endif
+
   iPic3D::c_Solver KCode;
   KCode.Init(argc, argv); //! load param from file, init the grid, fields
 

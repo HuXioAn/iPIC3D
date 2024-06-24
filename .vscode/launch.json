@@ -7,7 +7,7 @@
         {
             "name": "DBG-iPIC3D",
             "type": "cppdbg",
-            "request": "attach",
+            "request": "launch",
             "program": "/usr/bin/mpirun",
             "args": [
                 "-np",
@@ -41,6 +41,7 @@
             "processId": "${command:pickProcess}",
             "program": "${workspaceFolder}/buildDBG/iPIC3D_d",
             "MIMode": "gdb",
+            "additionalSOLibSearchPath": "${workspaceFolder}/buildDBG/**",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",

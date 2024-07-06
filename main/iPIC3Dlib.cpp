@@ -34,6 +34,7 @@
 #include "Particles3D.h"
 #include "Timing.h"
 #include "ParallelIO.h"
+#include "outputPrepare.h"
 //
 #ifndef NO_HDF5
 #include "WriteOutputParallel.h"
@@ -133,6 +134,8 @@ int c_Solver::Init(int argc, char **argv) {
 
   // Print the initial settings to stdout and a file
   if (myrank == 0) {
+    //check and create the output directory
+    checkOutputFolder(SaveDirName);
     MPIdata::instance().Print();
     vct->Print();
     col->Print();
